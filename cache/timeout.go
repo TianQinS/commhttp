@@ -98,16 +98,16 @@ func (this *TCache) reduce() {
 	// expire sooner (minor expire unix timestamp) is better candidate for deletion.
 	i, j := 0, len(this.cacheMap)-this.capacity
 	if j > 0 {
-		best_key, min_seq := "", uint64(0)
+		bestKey, minSeq := "", uint64(0)
 		for key, atom := range this.cacheMap {
-			if i == 0 || atom.seq < min_seq {
-				best_key = key
-				min_seq = atom.seq
+			if i == 0 || atom.seq < minSeq {
+				bestKey = key
+				minSeq = atom.seq
 			}
 			i++
 
 			if i >= RANDOM_CANDIDATE_SIZE {
-				this.Delete(best_key)
+				this.Delete(bestKey)
 				j--
 				i = 0
 			}
