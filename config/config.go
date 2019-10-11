@@ -9,7 +9,7 @@ import (
 
 const (
 	// json格式配置文件
-	CONF_FILE = "./conf.ini"
+	CONF_FILE = "./confhttp.ini"
 )
 
 var (
