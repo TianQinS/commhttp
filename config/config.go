@@ -1,7 +1,7 @@
 package config
 
 import (
-	"fmt"
+	"log"
 	"runtime/debug"
 
 	"github.com/lytics/confl"
@@ -65,7 +65,7 @@ type App struct {
 
 func init() {
 	if _, err := confl.DecodeFile(CONF_FILE, Conf); err != nil {
-		fmt.Printf("[Config] read conf file error. info=%s trace=%s\n", err.Error(), string(debug.Stack()))
+		log.Fatalf("[Config] read conf file error. info=%s trace=%s\n", err.Error(), string(debug.Stack()))
 	} else {
 		// fmt.Println("[Config] read conf ok.", Conf)
 	}
